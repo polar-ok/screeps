@@ -1,3 +1,4 @@
+//留个爪印——by薛定谔
 var roleHarvester = require('role.harvester');
 //包含一个叫role.harvester的module并赋值到roleHarvester
 var roleUpgrader = require('role.upgrader');
