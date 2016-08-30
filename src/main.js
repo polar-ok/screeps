@@ -51,15 +51,9 @@ if(tower) {
     for (var findSpawn in Game.spawns) {
       var roomSpawn = Game.spawns[findSpawn];
     }
-    var roomSpawnRemaining = roomSpawn.energy;//加入extension
-//<<<<<<< HEAD
+    var roomSpawnRemaining = roomSpawn.energy;
 
-    //计量扩展的剩余能量
-    var extensions =Game.spawns.Factory01.room.find(FIND_MY_STRUCTURES, {
-      filter: { structureType: STRUCTURE_EXTENSION }
-    });
-    var sumExtension =_.sum(extensions.store);
-
+var sumEnergy=Game.spawns.Spawn1.room.energyAvailable;
 
     if(roomSpawnRemaining >= 300){//修改条件生产更高效率的代码虫
         //代码虫部件费用一览：
@@ -73,7 +67,7 @@ if(tower) {
                 console.log('正在建造新的开采虫：' + newNameHarvesters);
             }
             else{
-                if(roomSpawnRemaining + sumExtension >= 400) {
+                if(sumEnergy>= 400) {
                     var newNameHarvesters = Game.spawns['Factory01'].createCreep([WORK,WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'harvester'});
                     console.log('正在建造新的开采虫：' + newNameHarvesters);
                 }
@@ -92,7 +86,7 @@ if(tower) {
                 }
             if(harvesters.length >= minHarvester) {
                 var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-                if(upgraders.length < minUpgrader && roomSpawnRemaining + sumExtension >= 500) {//添加条件生产更高效率的代码虫
+                if(upgraders.length < minUpgrader &&sumEnergy>= 500) {//添加条件生产更高效率的代码虫
                     if(upgraders.length < minUpgrader) {//添加条件生产更高效率的代码虫
                         var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'upgrader'});
                         console.log('正在建造新的升级虫：' + newNameUpgraders);
@@ -101,14 +95,14 @@ if(tower) {
                         var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK,CARRY,CARRY,CARRY,MOVE], nameCreeps, {role: 'upgrader'});
                         console.log('正在建造新的升级虫：' + newNameUpgraders);
                     }
-                if(upgraders.length >= minUpgrader && roomSpawnRemaining + sumExtension == 400) {
+                if(upgraders.length >= minUpgrader && sumEnergy == 400) {
                     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
                     if(builders.length < minBuilder) {//添加条件生产更高效率的代码虫
                         var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'builder'});
                         console.log('正在建造新的建造虫：' + newNameBuilders);
                     }
                     else {
-                        var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'builder'});
+                    //这是要干嘛……两个生产公式？    var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'builder'});
                         var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY, CARRY,MOVE, MOVE], nameCreeps, {role: 'builder'});
                         console.log('正在建造新的建造虫：' + newNameBuilders);
                     }
