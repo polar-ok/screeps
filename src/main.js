@@ -49,6 +49,7 @@ if(tower) {
     }
     var roomSpawnRemaining = roomSpawn.energy;//加上extension吧……
     if(roomSpawnRemaining >= 300){//修改条件生产更高效率的代码虫
+      //WORK = 100，CARRY=MOVE=50
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         if(harvesters.length < minHarvester) {
             var newNameHarvesters = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'harvester'});
