@@ -1,5 +1,4 @@
 //留个爪印——by薛定谔
-//pulling test
 var roleHarvester = require('role.harvester');
 //包含一个叫role.harvester的module并赋值到roleHarvester
 var roleUpgrader = require('role.upgrader');
@@ -48,7 +47,7 @@ if(tower) {
     for (var findSpawn in Game.spawns){
       var roomSpawn = Game.spawns[findSpawn];
     }
-    var roomSpawnRemaining = roomSpawn.energy;
+    var roomSpawnRemaining = roomSpawn.energy;//加上extension吧……
     if(roomSpawnRemaining >= 300){//修改条件生产更高效率的代码虫
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         if(harvesters.length < minHarvester) {
