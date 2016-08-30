@@ -48,7 +48,7 @@ if(tower) {
     for (var findSpawn in Game.spawns){
       var roomSpawn = Game.spawns[findSpawn];
     }
-    var roomSpawnRemaining = roomSpawn.energy;
+    var roomSpawnRemaining = roomSpawn.energy;//加入extension
     if(roomSpawnRemaining >= 300){//修改条件生产更高效率的代码虫
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         if(harvesters.length < minHarvester) {
