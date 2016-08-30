@@ -7,11 +7,11 @@
     	    if(creep.memory.building && creep.carry.energy == 0) {
           //如果
                 creep.memory.building = false;
-                creep.say('开采队列...');
+                creep.say('资源不足了唔...');
     	    }
     	    if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
     	        creep.memory.building = true;
-    	        creep.say('建造，队列中...');
+    	        creep.say('建造www');
     	    }
 
     	    if(creep.memory.building) {
