@@ -14,6 +14,14 @@ var roleBuilder =require('role.builder');
 
 module.exports.loop = function () {
 //使用对象来运行函数。这里的module.exports.loop已经包含了自动循环的函数
+//tower的运行
+var tower = Game.getObjectById('3b976740568433a5a2b0a2da');
+if(tower) {
+    var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+    if(closestHostile) {
+        tower.attack(closestHostile);
+    }
+}
     for(var name in Game.creeps) {
     //循环代码虫的名字
         var creep = Game.creeps[name];
