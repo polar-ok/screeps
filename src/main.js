@@ -1,3 +1,5 @@
+//留个爪印——by薛定谔
+
 var roleHarvester = require('role.harvester');
 //包含一个叫role.harvester的module并赋值到roleHarvester
 var roleUpgrader = require('role.upgrader');
@@ -13,6 +15,14 @@ var roleBuilder =require('role.builder');
 
 module.exports.loop = function () {
 //使用对象来运行函数。这里的module.exports.loop已经包含了自动循环的函数
+//tower的运行
+var tower = Game.getObjectById('3b976740568433a5a2b0a2da');
+if(tower) {
+    var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+    if(closestHostile) {
+        tower.attack(closestHostile);
+    }
+}
     for(var name in Game.creeps) {
     //循环代码虫的名字
         var creep = Game.creeps[name];
@@ -39,22 +49,22 @@ module.exports.loop = function () {
       var roomSpawn = Game.spawns[findSpawn];
     }
     var roomSpawnRemaining = roomSpawn.energy;
-    if(roomSpawnRemaining >= 200){
+    if(roomSpawnRemaining >= 300){//修改条件生产更高效率的代码虫
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         if(harvesters.length < minHarvester) {
-            var newNameHarvesters = Game.spawns['Factory01'].createCreep([WORK,CARRY,MOVE], nameCreeps, {role: 'harvester'});
+            var newNameHarvesters = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'harvester'});
             console.log('正在建造新的开采虫：' + newNameHarvesters);
         }
         if(harvesters.length >= minHarvester) {
             var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-            if(upgraders.length < minUpgrader) {
-                var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK, CARRY, MOVE], nameCreeps, {role: 'upgrader'});
+            if(upgraders.length < minUpgrader) {//添加条件生产更高效率的代码虫
+                var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'upgrader'});
                 console.log('正在建造新的升级虫：' + newNameUpgraders);
             }
             if(upgraders.length >= minUpgrader) {
                 var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-                if(builders.length < minBuilder) {
-                    var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK, CARRY, MOVE], nameCreeps, {role: 'builder'});
+                if(builders.length < minBuilder) {//添加条件生产更高效率的代码虫
+                    var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY, CARRY,MOVE, MOVE], nameCreeps, {role: 'builder'});
                     console.log('正在建造新的建造虫：' + newNameBuilders);
                 }
             }
