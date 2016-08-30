@@ -1,4 +1,8 @@
 //留个爪印——by薛定谔
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/simulation
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder =require('role.builder');
@@ -48,6 +52,7 @@ if(tower) {
       var roomSpawn = Game.spawns[findSpawn];
     }
     var roomSpawnRemaining = roomSpawn.energy;//加入extension
+<<<<<<< HEAD
 
     //计量扩展的剩余能量
     var extensions =Game.spawns.Factory01.room.find(FIND_MY_STRUCTURES, {
@@ -79,12 +84,23 @@ if(tower) {
                     }
                 }
             }
+=======
+    if(roomSpawnRemaining >= 300){//修改条件生产更高效率的代码虫
+        var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+        if(harvesters.length < minHarvester) {
+            var newNameHarvesters = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'harvester'});
+            console.log('正在建造新的开采虫：' + newNameHarvesters);
+>>>>>>> origin/simulation
         }
 
         console.log(roomSpawnRemaining + sumExtension);
         if(harvesters.length >= minHarvester) {
             var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+<<<<<<< HEAD
             if(upgraders.length < minUpgrader && roomSpawnRemaining + sumExtension >= 500) {//添加条件生产更高效率的代码虫
+=======
+            if(upgraders.length < minUpgrader) {//添加条件生产更高效率的代码虫
+>>>>>>> origin/simulation
                 var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'upgrader'});
                 console.log('正在建造新的升级虫：' + newNameUpgraders);
             }
@@ -95,11 +111,15 @@ if(tower) {
             if(upgraders.length >= minUpgrader && roomSpawnRemaining + sumExtension == 400) {
                 var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
                 if(builders.length < minBuilder) {//添加条件生产更高效率的代码虫
+<<<<<<< HEAD
                     var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'builder'});
                     console.log('正在建造新的建造虫：' + newNameBuilders);
                 }
                 else {
                     var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'builder'});
+=======
+                    var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY, CARRY,MOVE, MOVE], nameCreeps, {role: 'builder'});
+>>>>>>> origin/simulation
                     console.log('正在建造新的建造虫：' + newNameBuilders);
                 }
                     //代码虫部件作用一览：
