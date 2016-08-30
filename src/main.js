@@ -57,13 +57,13 @@ if(tower) {
         }
         if(harvesters.length >= minHarvester) {
             var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-            if(upgraders.length < minUpgrader&&roomSpawnRemaining>=500) {//添加条件生产更高效率的代码虫
+            if(upgraders.length < minUpgrader) {//添加条件生产更高效率的代码虫
                 var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'upgrader'});
                 console.log('正在建造新的升级虫：' + newNameUpgraders);
             }
             if(upgraders.length >= minUpgrader) {
                 var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-                if(builders.length < minBuilder&&roomSpawnRemaining>=400) {//添加条件生产更高效率的代码虫
+                if(builders.length < minBuilder) {//添加条件生产更高效率的代码虫
                     var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY, CARRY,MOVE, MOVE], nameCreeps, {role: 'builder'});
                     console.log('正在建造新的建造虫：' + newNameBuilders);
                 }
