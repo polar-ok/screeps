@@ -11,32 +11,21 @@ var roleHarvester = {
         else {
             var targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION ||
-                                structure.structureType == STRUCTURE_TOWER ||
+                        return ((structure.structureType == STRUCTURE_EXTENSION ||
                                 structure.structureType == STRUCTURE_SPAWN ||
-                                structure.structureType == STRUCTURE_STORAGE) && structure.energy < structure.energyCapacity;
+                                structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity ) ||
+                                (structure.structureType == STRUCTURE_CONTAINER && structure.store < structure.store < structure.storeCapacity ) ||
+                                (structure.structureType == STRUCTURE_STORAGE && structure.store < structure.store < structure.storeCapacity);
                     }
             });
-            var findContainers = creep.room.find(FIND_STRUCTURES, {
-              filter: { structureType: STRUCTURE_CONTAINER }
-            });
-            var extensionResources = findContainers.energy < findContainers.energyCapacity;
-            if(extensionResources == true) {
-              if(targets.length > 0) {
+            if(targets.length > 0) {
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0]);
+                    console.log(targets);
                 }
-              }
-              if(findContainers.length) {
-                if(container.store[RESOURCE_ENERGY] < container.storeCapacity) {
-                  if(creep.transfer(findContainers[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                      creep.moveTo(findContainers[0]);
-                  }
-                }
-              }
             }
         }
-	    }
+	}
 };
 
 module.exports = roleHarvester;
