@@ -1,8 +1,8 @@
 //留个爪印——by薛定谔
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 
->>>>>>> origin/simulation
+//>>>>>>> 5f070d4a88e1546d2f38c032aca719c9e1e4aeab
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder =require('role.builder');
@@ -41,7 +41,7 @@ if(tower) {
         if(creep.memory.role == 'builder') {
             roleBuilder.run(creep);
         }
-    }
+        }
     var minHarvester = 6;
     var minUpgrader = 8;
     var minBuilder = 6;
@@ -52,7 +52,7 @@ if(tower) {
       var roomSpawn = Game.spawns[findSpawn];
     }
     var roomSpawnRemaining = roomSpawn.energy;//加入extension
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
     //计量扩展的剩余能量
     var extensions =Game.spawns.Factory01.room.find(FIND_MY_STRUCTURES, {
@@ -84,44 +84,34 @@ if(tower) {
                     }
                 }
             }
-=======
-    if(roomSpawnRemaining >= 300){//修改条件生产更高效率的代码虫
-        var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-        if(harvesters.length < minHarvester) {
-            var newNameHarvesters = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'harvester'});
-            console.log('正在建造新的开采虫：' + newNameHarvesters);
->>>>>>> origin/simulation
-        }
-
-        console.log(roomSpawnRemaining + sumExtension);
-        if(harvesters.length >= minHarvester) {
-            var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-<<<<<<< HEAD
-            if(upgraders.length < minUpgrader && roomSpawnRemaining + sumExtension >= 500) {//添加条件生产更高效率的代码虫
-=======
-            if(upgraders.length < minUpgrader) {//添加条件生产更高效率的代码虫
->>>>>>> origin/simulation
-                var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'upgrader'});
-                console.log('正在建造新的升级虫：' + newNameUpgraders);
-            }
-            else {
-                var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK,CARRY,CARRY,CARRY,MOVE], nameCreeps, {role: 'upgrader'});
-                console.log('正在建造新的升级虫：' + newNameUpgraders);
-            }
-            if(upgraders.length >= minUpgrader && roomSpawnRemaining + sumExtension == 400) {
-                var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-                if(builders.length < minBuilder) {//添加条件生产更高效率的代码虫
-<<<<<<< HEAD
-                    var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'builder'});
-                    console.log('正在建造新的建造虫：' + newNameBuilders);
+            if(roomSpawnRemaining >= 300){//修改条件生产更高效率的代码虫
+                var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+                if(harvesters.length < minHarvester) {
+                    var newNameHarvesters = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'harvester'});
+                    console.log('正在建造新的开采虫：' + newNameHarvesters);
                 }
-                else {
-                    var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'builder'});
-=======
-                    var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY, CARRY,MOVE, MOVE], nameCreeps, {role: 'builder'});
->>>>>>> origin/simulation
-                    console.log('正在建造新的建造虫：' + newNameBuilders);
-                }
+            if(harvesters.length >= minHarvester) {
+                var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+                if(upgraders.length < minUpgrader && roomSpawnRemaining + sumExtension >= 500) {//添加条件生产更高效率的代码虫
+                    if(upgraders.length < minUpgrader) {//添加条件生产更高效率的代码虫
+                        var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK,WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'upgrader'});
+                        console.log('正在建造新的升级虫：' + newNameUpgraders);
+                    }
+                    else {
+                        var newNameUpgraders = Game.spawns['Factory01'].createCreep([WORK,CARRY,CARRY,CARRY,MOVE], nameCreeps, {role: 'upgrader'});
+                        console.log('正在建造新的升级虫：' + newNameUpgraders);
+                    }
+                if(upgraders.length >= minUpgrader && roomSpawnRemaining + sumExtension == 400) {
+                    var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+                    if(builders.length < minBuilder) {//添加条件生产更高效率的代码虫
+                        var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], nameCreeps, {role: 'builder'});
+                        console.log('正在建造新的建造虫：' + newNameBuilders);
+                    }
+                    else {
+                        var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY,MOVE], nameCreeps, {role: 'builder'});
+                        var newNameBuilders = Game.spawns['Factory01'].createCreep([WORK,WORK,CARRY, CARRY,MOVE, MOVE], nameCreeps, {role: 'builder'});
+                        console.log('正在建造新的建造虫：' + newNameBuilders);
+                    }
                     //代码虫部件作用一览：
                     //MOVE是移动部件，每一个MOVE可以在每一个游戏时中减少2点疲劳度下降；CARRY是背包部件，每一个CARRY可以提高50点可以携带能量极限
                     //WORK是工作部件，如果是harvest命令，每一个游戏时获取2点能量；如果是build命令，每一个游戏时建造5点；如果是repair，每一个游戏时使用1点能量修复100点生命；
@@ -132,6 +122,9 @@ if(tower) {
                     //CLAIM是殖民部件，作用是对一个RCL进行获取控制/攻击/降级；对己方的RCL，每一个部件点数可以为RCL提供1个游戏时的储量；对敌方的RCL，对RCL进行降级和加速降级计时器；
                     //CLAIM是殖民部件，装载有CLAIM的代码虫会有500秒的寿命缩减，而且不能被重置。
                     //TOUGH是防御部件，装载有这个部件的代码虫可以获得10点生命值加成，每一个防御部件增加10点生命。
+                }
+                }
+            }
             }
         }
     }
