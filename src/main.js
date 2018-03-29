@@ -1,6 +1,6 @@
 //留个爪印——by薛定谔
 //<<<<<<< HEAD
-//=======
+//测试
 
 //>>>>>>> 5f070d4a88e1546d2f38c032aca719c9e1e4aeab
 var roleHarvester = require('role.harvester');
